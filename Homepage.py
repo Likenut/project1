@@ -9,12 +9,13 @@ if "stats" not in st.session_state:
 if "current_game" not in st.session_state:
     st.session_state["current_game"] = {"target_word": "", "guess_count": 0, "guessed_correctly": False}
 
+# UI
 st.set_page_config(page_title="Guessing Game", layout="centered")
 st.sidebar.success("Select a page above to play or view stats.")
 st.title("🎮 Play the Guessing Game")
 st.markdown("Try to guess the secret word!\nCompare the guess with the target word and return hints.\n- '🟩': Letter is in the correct position.\n- '🟨': Letter is in the target word but in the wrong position.\n- '⬜': Letter is not in the target word.")
 
-
+#aopenAI key here
 client = OpenAI(api_key="key here")
 model = "gpt-4o-mini"
 
@@ -54,7 +55,7 @@ def generate_hint(guess, target):
 def reset_game():
     """Reset the game state for a new game."""
     st.session_state["current_game"] = {
-        "target_word": random.choice(["apple", "banana", "grape", "cherry", "mango"]),  # Example target words
+        "target_word": random.choice(["apple", "chair", "table", "bread", "cloud", "dance", "blaze", "swing", "smile", "dream", "pearl", "bloom", "stone", "brisk", "vocal", "drain", "sweep", "spend", "sail", "flute", "glove", "shiny", "match", "flick", "trust"]),  # Example target words. Can add more
         "guess_count": 0,
         "guessed_correctly": False
     }
@@ -66,7 +67,7 @@ if not st.session_state["current_game"]["target_word"]:
 
 
 
-
+# getting hint from ai
 def ai(user_guess):
     question = "I am playing a word guessing game. Shortly and only give me hints to the corrects word:" + str(user_guess)
 
