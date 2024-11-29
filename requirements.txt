@@ -1,5 +1,5 @@
 streamlit
 random
-Pandas
-matplotlib.pyplot
+pandas
+matplotlib
 openai
